@@ -43,9 +43,42 @@
         .conversion-box { background: #fff9e6; border: 2px dashed #ffcc00; padding: 20px; border-radius: 12px; margin: 30px 0; text-align: center; }
         .scarcity-text { color: #d9534f; font-weight: bold; font-size: 15px; margin-bottom: 10px; display: block; }
         .compare-text { color: #1a4a7c; font-weight: 600; font-size: 15px; margin-bottom: 12px; display: block; }
-        .progress-container { background-color: #ddd; border-radius: 10px; height: 14px; width: 100%; margin: 15px 0; overflow: hidden; }
-        .progress-bar { background-color: #28a745; height: 100%; width: 85%; }
-        .cta-button { display: block; background: #ffcc00; color: #000; text-align: center; padding: 20px; font-size: 19px; font-weight: 800; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); text-transform: uppercase; }
+        
+        /* 进度条：修改为流动模式 */
+        .progress-container { background-color: #ddd; border-radius: 10px; height: 14px; width: 100%; margin: 15px 0; overflow: hidden; position: relative; }
+        .progress-bar { 
+            background-color: #28a745; 
+            background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+            background-size: 40px 40px;
+            height: 100%; 
+            width: 85%; 
+            animation: flow 2s linear infinite; 
+        }
+        @keyframes flow {
+            from { background-position: 40px 0; }
+            to { background-position: 0 0; }
+        }
+
+        /* 按钮：修改为跳动模式 (Pulse) */
+        .cta-button { 
+            display: block; 
+            background: #ffcc00; 
+            color: #000; 
+            text-align: center; 
+            padding: 20px; 
+            font-size: 19px; 
+            font-weight: 800; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); 
+            text-transform: uppercase; 
+            animation: pulse 1.5s infinite; 
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 5px 25px rgba(255, 204, 0, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
+        }
 
         .steps { background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 25px 0; }
         .step-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
@@ -55,18 +88,32 @@
         th { background: #1a4a7c; color: #fff; padding: 10px; text-align: left; }
         td { border-bottom: 1px solid #eee; padding: 10px; }
 
+        /* 评论：修改为无缝循环模式 */
         .comments-outer { background: #f8f9fa; padding: 20px; margin-top: 40px; border-radius: 10px; border: 1px solid #e1e4e8; overflow: hidden; }
         .comments-window { height: 350px; overflow: hidden; position: relative; }
-        .comments-track { position: absolute; top: 0; width: 100%; animation: scrollUp 50s linear infinite; }
+        
+        /* 评论轨道：动画时间缩短，确保无缝 */
+        .comments-track { position: absolute; top: 0; width: 100%; animation: infiniteScrollUp 30s linear infinite; }
         .comments-track:hover { animation-play-state: paused; }
 
-        @keyframes scrollUp { 0% { top: 0; } 100% { top: -1680px; } }
+        /* 定义无缝循环动画：滚动高度需与内容高度一致 */
+        @keyframes infiniteScrollUp { 
+            0% { top: 0; } 
+            100% { top: -1155px; } /* 这个高度是所有评论加起来的总高度 */
+        }
 
         .comment { background: #fff; margin-bottom: 15px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 14px; }
         .comment-name { font-weight: bold; color: #385898; }
         .comment-time { color: #91949b; font-size: 12px; margin-top: 5px; }
 
         .sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.15); z-index: 1000; box-sizing: border-box; }
+        /* 吸底按钮也应用跳动动画 */
+        .sticky-footer .cta-button { animation: pulseSticky 1.5s infinite; }
+        @keyframes pulseSticky {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -102,11 +149,13 @@
 
         <div class="conversion-box">
             <span class="scarcity-text">⏳ Let op: Het kwartaalbudget is voor 85% vergeven.</span>
+            
             <div class="progress-container"><div class="progress-bar"></div></div>
             
             <span class="compare-text">Vergelijk gecertificeerde isolatiebedrijven en ontdek uw besparing.</span>
             
             <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Controleer binnen 1 minuut uw recht op vergoeding</p>
+            
             <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button">START DE GRATIS CHECK →</a>
         </div>
 
@@ -133,6 +182,20 @@
                     <div class="comment"><span class="comment-name">Pieter Post</span>: "Onze buren hadden het al gedaan, nu wij ook. Die €32,50 per m² is top."<div class="comment-time">2 uur geleden</div></div>
                     <div class="comment"><span class="comment-name">Linda de Mol</span>: "Ik wist niet dat er nog budget was voor 2025 / 2026. Bedankt!"<div class="comment-time">3 uur geleden</div></div>
                     <div class="comment"><span class="comment-name">Jan de Bruin</span>: "Investering was binnen 2 jaar terugverdiend. Doen!"<div class="comment-time">4 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Karin Smit</span>: "Zojuist de check gedaan, kom in aanmerking voor €2100!"<div class="comment-time">5 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Henk Janssen</span>: "Top geregeld allemaal. Erg tevreden over de isolatie."<div class="comment-time">6 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Els van Schaik</span>: "Geldt dit ook in Brabant? <br><b>Admin:</b> Jazeker Els, dit is een landelijke regeling."<div class="comment-time">7 uur geleden</div></div>
+                    
+                    <div class="comment"><span class="comment-name">Mark van Dijk</span>: "Krijg bijna €2400 terug via de 2025 regeling! Echt een aanrader."<div class="comment-time">Net geplaatst</div></div>
+                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding voor platte daken."<div class="comment-time">15 min geleden</div></div>
+                    <div class="comment"><span class="comment-name">Willem de Vries</span>: "Huis is nu veel warmer en de aanvraag was zo geregeld."<div class="comment-time">45 min geleden</div></div>
+                    <div class="comment"><span class="comment-name">Annet Meijer</span>: "Eindelijk een duidelijke site. De check was zo gedaan."<div class="comment-time">1 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Pieter Post</span>: "Onze buren hadden het al gedaan, nu wij ook. Die €32,50 per m² is top."<div class="comment-time">2 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Linda de Mol</span>: "Ik wist niet dat er nog budget was voor 2025 / 2026. Bedankt!"<div class="comment-time">3 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Jan de Bruin</span>: "Investering was binnen 2 jaar terugverdiend. Doen!"<div class="comment-time">4 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Karin Smit</span>: "Zojuist de check gedaan, kom in aanmerking voor €2100!"<div class="comment-time">5 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Henk Janssen</span>: "Top geregeld allemaal. Erg tevreden over de isolatie."<div class="comment-time">6 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Els van Schaik</span>: "Geldt dit ook in Brabant? <br><b>Admin:</b> Jazeker Els, dit is een landelijke regeling."<div class="comment-time">7 uur geleden</div></div>
                 </div>
             </div>
         </div>
@@ -140,7 +203,7 @@
 </div>
 
 <div class="sticky-footer">
-    <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button" style="font-size: 16px; padding: 15px;">ONTDEK MIJN SUBSIDIE →</a>
+    <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button" style="font-size: 16px; padding: 15px; animation: pulseSticky 1.5s infinite;">ONTDEK MIJN SUBSIDIE →</a>
 </div>
 
 </body>

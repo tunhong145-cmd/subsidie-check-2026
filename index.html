@@ -31,9 +31,10 @@
         
         .trust-bar { background: #f8f9fa; padding: 12px; text-align: center; font-size: 11px; color: #777; border-bottom: 1px solid #eee; }
         
-        /* Logo Wall - Enhanced visibility */
-        .logo-wall { display: flex; justify-content: space-around; align-items: center; padding: 15px 10px; background: #fff; border-bottom: 1px solid #eee; }
-        .logo-wall img { height: 30px; width: auto; opacity: 0.6; filter: grayscale(1); }
+        /* Logo Wall - Using Flex for perfect centering */
+        .logo-wall { display: flex; justify-content: space-around; align-items: center; padding: 15px 20px; background: #fff; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 10px; }
+        .logo-item { display: flex; align-items: center; color: #999; font-size: 12px; font-weight: bold; opacity: 0.7; }
+        .logo-item svg { width: 24px; height: 24px; margin-right: 5px; fill: #999; }
 
         .article-meta { font-size: 13px; color: #888; margin-bottom: 25px; }
         h1 { font-size: 26px; line-height: 1.2; color: #111; margin-top: 10px; letter-spacing: -0.5px; }
@@ -98,9 +99,9 @@
         .sticky-footer .cta-button { animation: pulseSticky 1.5s infinite; }
         @keyframes pulseSticky { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
 
-        /* Exit Intent Popup */
+        /* Timer-based Popup */
         #exit-intent-popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center; }
-        .popup-content { background: #fff; max-width: 400px; padding: 30px; border-radius: 15px; text-align: center; position: relative; margin: 20px; }
+        .popup-content { background: #fff; max-width: 400px; padding: 30px; border-radius: 15px; text-align: center; position: relative; margin: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .popup-close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #ccc; }
     </style>
 </head>
@@ -123,10 +124,18 @@
     <div class="trust-bar">Gecertificeerde Informatie over: ISDE Subsidies • Rijksoverheid • 2025 / 2026 Energieplan</div>
 
     <div class="logo-wall">
-        <img src="https://cdn-icons-png.flaticon.com/512/301/301138.png" alt="Energy Label">
-        <img src="https://cdn-icons-png.flaticon.com/512/9331/9331070.png" alt="Security">
-        <img src="https://cdn-icons-png.flaticon.com/512/1162/1162456.png" alt="Certificate">
-        <img src="https://cdn-icons-png.flaticon.com/512/2569/2569174.png" alt="Privacy">
+        <div class="logo-item">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            GECERTIFICEERD
+        </div>
+        <div class="logo-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            AVG COMPLIANT
+        </div>
+        <div class="logo-item">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            ISDE 2026
+        </div>
     </div>
 
     <div class="content-padding">
@@ -182,9 +191,7 @@
         </div>
 
         <img src="news3.png" alt="Gelukkige huiseigenaren">
-        <div class="img-caption">Familie Bakker ontving €2.850 terug: "De beste keuze van dit jaar!"</div>
-
-        <p>De familie Bakker uit Utrecht is een van de duizenden die de check deden. <i>"Binnen 48 uur was onze aanvraag goedgekeurd. Het geld stond sneller op de rekening dan verwacht en ons huis voelt direct comfortabeler aan."</i></p>
+        <div class="img-caption">Familie Bakker ontving €2.850 terug: "De beste keuze van dit year!"</div>
 
         <div class="faq-box">
             <h3 style="color:#1a4a7c; font-size:18px;">Veelgestelde Vragen (FAQ)</h3>
@@ -211,11 +218,8 @@
                     <div class="comment"><span class="comment-name">Willem de Vries</span>: "Huis is nu veel warmer en de aanvraag was zo geregeld."<div class="comment-time">45 min geleden</div></div>
                     <div class="comment"><span class="comment-name">Annet Meijer</span>: "Eindelijk een duidelijke site. De check was zo gedaan."<div class="comment-time">1 uur geleden</div></div>
                     <div class="comment"><span class="comment-name">Pieter Post</span>: "Onze buren hadden het al gedaan, nu wij ook. Die €32,50 per m² is top."<div class="comment-time">2 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Linda de Mol</span>: "Ik wist niet dat er nog budget was voor 2025 / 2026. Bedankt!"<div class="comment-time">3 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Jan de Bruin</span>: "Investering was binnen 2 jaar terugverdiend. Doen!"<div class="comment-time">4 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Karin Smit</span>: "Zojuist de check gedaan, kom in aanmerking voor €2100!"<div class="comment-time">5 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Mark van Dijk</span>: "Krijg bijna €2400 terug via de 2025 regeling! Echt een aanrader."<div class="comment-time">Net geplaatst</div></div>
-                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding."<div class="comment-time">15 min geleden</div></div>
+                    <div class="comment"><span class="comment-name">Mark van Dijk</span>: "Krijg bijna €2400 terug via de 2025 regeling!"<div class="comment-time">Net geplaatst</div></div>
+                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Jazeker Sanne, ook in 2025/2026 geldt de vergoeding."<div class="comment-time">15 min geleden</div></div>
                 </div>
             </div>
         </div>
@@ -227,13 +231,13 @@
 </div>
 
 <script>
-    let popupShown = false;
-    document.addEventListener("mouseleave", function(e) {
-        if (e.clientY < 0 && !popupShown) {
+    // Timer based popup logic (20 seconds)
+    window.onload = function() {
+        setTimeout(function() {
             document.getElementById("exit-intent-popup").style.display = "flex";
-            popupShown = true;
-        }
-    });
+        }, 20000); // 20000 milliseconds = 20 seconds
+    };
+
     function closePopup() {
         document.getElementById("exit-intent-popup").style.display = "none";
     }

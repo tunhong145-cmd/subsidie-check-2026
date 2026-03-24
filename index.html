@@ -24,15 +24,18 @@
         .container { max-width: 650px; margin: 0 auto; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .content-padding { padding: 25px; }
         
-        /* 统一为 Offer 页面的深蓝色 #1a4a7c */
         header { background: #fff; border-bottom: 3px solid #1a4a7c; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 900; color: #1a4a7c; font-size: 20px; text-transform: uppercase; }
         .live-badge { background: #1a4a7c; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; animation: blink 1.2s infinite; }
         @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.6;} 100% {opacity: 1;} }
         
         .trust-bar { background: #f8f9fa; padding: 12px; text-align: center; font-size: 11px; color: #777; border-bottom: 1px solid #eee; }
-        .article-meta { font-size: 13px; color: #888; margin-bottom: 25px; }
+        
+        /* Logo 墙样式 */
+        .logo-wall { display: flex; justify-content: space-around; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #eee; opacity: 0.6; grayscale: 100%; filter: grayscale(100%); }
+        .logo-wall img { width: 60px; height: auto; margin: 0; }
 
+        .article-meta { font-size: 13px; color: #888; margin-bottom: 25px; }
         h1 { font-size: 26px; line-height: 1.2; color: #111; margin-top: 10px; letter-spacing: -0.5px; }
         h2 { font-size: 20px; color: #1a4a7c; margin-top: 30px; border-left: 4px solid #1a4a7c; padding-left: 10px; }
         .highlight { color: #1a4a7c; font-weight: bold; }
@@ -40,11 +43,24 @@
         img { width: 100%; height: auto; border-radius: 6px; margin: 20px 0 10px 0; display: block; }
         .img-caption { font-size: 13px; color: #666; font-style: italic; text-align: center; margin-bottom: 20px; background: #f9f9f9; padding: 8px; border-radius: 4px; }
 
+        /* 节能可视化账单 */
+        .savings-box { background: #eefdf3; border: 1px solid #28a745; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .savings-flex { display: flex; justify-content: space-between; text-align: center; }
+        .savings-item { flex: 1; }
+        .savings-item span { display: block; font-size: 12px; color: #666; }
+        .savings-item b { font-size: 18px; color: #d9534f; }
+        .savings-item.green b { color: #28a745; }
+        .savings-total { text-align: center; margin-top: 10px; font-weight: bold; color: #28a745; font-size: 20px; border-top: 1px dashed #28a745; padding-top: 5px; }
+
         .conversion-box { background: #fff9e6; border: 2px dashed #ffcc00; padding: 20px; border-radius: 12px; margin: 30px 0; text-align: center; }
         .scarcity-text { color: #d9534f; font-weight: bold; font-size: 15px; margin-bottom: 10px; display: block; }
         .compare-text { color: #1a4a7c; font-weight: 600; font-size: 15px; margin-bottom: 12px; display: block; }
         
-        /* 进度条：修改为流动模式 */
+        /* 邮编伪互动输入框 */
+        .zip-input-wrap { display: flex; max-width: 250px; margin: 0 auto 15px auto; gap: 5px; }
+        .zip-input { flex: 2; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; text-align: center; }
+        .zip-input-ext { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; text-align: center; text-transform: uppercase; }
+
         .progress-container { background-color: #ddd; border-radius: 10px; height: 14px; width: 100%; margin: 15px 0; overflow: hidden; position: relative; }
         .progress-bar { 
             background-color: #28a745; 
@@ -54,69 +70,40 @@
             width: 85%; 
             animation: flow 2s linear infinite; 
         }
-        @keyframes flow {
-            from { background-position: 40px 0; }
-            to { background-position: 0 0; }
-        }
+        @keyframes flow { from { background-position: 40px 0; } to { background-position: 0 0; } }
 
-        /* 按钮：修改为跳动模式 (Pulse) */
-        .cta-button { 
-            display: block; 
-            background: #ffcc00; 
-            color: #000; 
-            text-align: center; 
-            padding: 20px; 
-            font-size: 19px; 
-            font-weight: 800; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); 
-            text-transform: uppercase; 
-            animation: pulse 1.5s infinite; 
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 5px 25px rgba(255, 204, 0, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); }
-        }
+        .cta-button { display: block; background: #ffcc00; color: #000; text-align: center; padding: 20px; font-size: 19px; font-weight: 800; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4); text-transform: uppercase; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        .steps { background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 25px 0; }
-        .step-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
-        .step-num { background: #1a4a7c; color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; font-size: 14px; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        /* FAQ 样式 */
+        .faq-section { margin: 30px 0; }
+        .faq-item { background: #fff; border: 1px solid #eee; margin-bottom: 10px; border-radius: 6px; padding: 15px; }
+        .faq-q { font-weight: bold; color: #1a4a7c; display: block; margin-bottom: 5px; cursor: pointer; }
+        .faq-a { font-size: 14px; color: #555; }
 
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-        th { background: #1a4a7c; color: #fff; padding: 10px; text-align: left; }
-        td { border-bottom: 1px solid #eee; padding: 10px; }
-
-        /* 评论：修改为无缝循环模式 */
         .comments-outer { background: #f8f9fa; padding: 20px; margin-top: 40px; border-radius: 10px; border: 1px solid #e1e4e8; overflow: hidden; }
         .comments-window { height: 350px; overflow: hidden; position: relative; }
-        
-        /* 评论轨道：动画时间缩短，确保无缝 */
         .comments-track { position: absolute; top: 0; width: 100%; animation: infiniteScrollUp 30s linear infinite; }
-        .comments-track:hover { animation-play-state: paused; }
-
-        /* 定义无缝循环动画：滚动高度需与内容高度一致 */
-        @keyframes infiniteScrollUp { 
-            0% { top: 0; } 
-            100% { top: -1155px; } /* 这个高度是所有评论加起来的总高度 */
-        }
-
-        .comment { background: #fff; margin-bottom: 15px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 14px; }
-        .comment-name { font-weight: bold; color: #385898; }
-        .comment-time { color: #91949b; font-size: 12px; margin-top: 5px; }
+        @keyframes infiniteScrollUp { 0% { top: 0; } 100% { top: -1155px; } }
 
         .sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.15); z-index: 1000; box-sizing: border-box; }
-        /* 吸底按钮也应用跳动动画 */
-        .sticky-footer .cta-button { animation: pulseSticky 1.5s infinite; }
-        @keyframes pulseSticky {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
+        
+        /* 退出意图弹窗 */
+        #exit-popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center; }
+        .popup-content { background: #fff; padding: 30px; border-radius: 12px; text-align: center; max-width: 400px; position: relative; margin: 20px; }
+        .popup-close { position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer; color: #999; }
     </style>
 </head>
 <body>
+
+<div id="exit-popup">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup()">×</span>
+        <h3 style="color:#d9534f;">Wacht! Vergeet uw subsidie niet</h3>
+        <p>De subsidiepot voor 2025 is voor 85% vergeven. Mis uw kans op <b>€32,50 per m²</b> niet!</p>
+        <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button" style="font-size:16px;">DOE DE GRATIS CHECK →</a>
+    </div>
+</div>
 
 <div class="container">
     <header>
@@ -124,6 +111,12 @@
         <div class="live-badge">LIVE UPDATES</div>
     </header>
     <div class="trust-bar">Gecertificeerde Informatie over: ISDE Subsidies • Rijksoverheid • 2025 / 2026 Energieplan</div>
+    
+    <div class="logo-wall">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/European_Energy_Label.svg" alt="Energy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/VCA_Logo.svg" alt="VCA">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/GDPR_Logo.svg" alt="GDPR">
+    </div>
 
     <div class="content-padding">
         <div class="article-meta">Gepubliceerd door <b>Eva de Boer</b> • Geactualiseerd op: 22 maart 2026</div>
@@ -133,69 +126,72 @@
         <img src="news1.png" alt="Officiële aankondiging">
         <div class="img-caption">Den Haag bevestigt: Extra budget vrijgemaakt voor woningverduurzaming in 2025 en 2026.</div>
 
-        <p>Tijdens de recente persconferentie is besloten de subsidiepot voor <b>2025 / 2026</b> aanzienlijk te vergroten. <i>"We moedigen elke woningeigenaar aan om de energie-efficiëntie van hun dak nu te verbeteren met deze regeling,"</i> aldus de woordvoerder.</p>
+        <p>Tijdens de recente persconferentie is besloten de subsidiepot voor <b>2025 / 2026</b> aanzienlijk te vergroten.</p>
+
+        <div class="savings-box">
+            <div class="savings-flex">
+                <div class="savings-item"><span>Zonder isolatie</span><b>€250/mnd</b></div>
+                <div style="font-size:24px; padding-top:10px;">➔</div>
+                <div class="savings-item green"><span>Met isolatie</span><b>€170/mnd</b></div>
+            </div>
+            <div class="savings-total">Besparing: €960 per jaar!</div>
+        </div>
 
         <img src="news2.png" alt="Hoge energierekening">
         <div class="img-caption">Stijgende kosten: Warmteverlies via het dak is de grootste boosdoener.</div>
 
-        <p>Veel huiseigenaren schrikken maandelijks van hun energierekening. Zonder goede dakisolatie ontsnapt tot wel <b>30% van de warmte</b> direct naar buiten via het dak.</p>
+        <p>Zonder goede dakisolatie ontsnapt tot wel <b>30% van de warmte</b> direct naar buiten via het dak.</p>
         
-        <table>
-            <tr><th>Type Woning</th><th>Oppervlakte</th><th>Gem. Subsidie</th></tr>
-            <tr><td>Tussenwoning</td><td>50 m²</td><td><b>€1.625</b></td></tr>
-            <tr><td>Hoekwoning</td><td>75 m²</td><td><b>€2.437</b></td></tr>
-            <tr><td>Vrijstaand</td><td>100+ m²</td><td><b>€3.250+</b></td></tr>
-        </table>
-
         <div class="conversion-box">
             <span class="scarcity-text">⏳ Let op: Het kwartaalbudget is voor 85% vergeven.</span>
-            
             <div class="progress-container"><div class="progress-bar"></div></div>
-            
             <span class="compare-text">Vergelijk gecertificeerde isolatiebedrijven en ontdek uw besparing.</span>
             
-            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Controleer binnen 1 minuut uw recht op vergoeding</p>
-            
+            <div class="zip-input-wrap">
+                <input type="number" class="zip-input" placeholder="1234" maxlength="4">
+                <input type="text" class="zip-input-ext" placeholder="AB" maxlength="2">
+            </div>
+
             <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button">START DE GRATIS CHECK →</a>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">*U wordt mogelijk kort gebeld om uw aanvraag te bevestigen.</p>
         </div>
 
         <h2>Hoe werkt het proces?</h2>
         <div class="steps">
-            <div class="step-item"><div class="step-num">1</div><div><b>Doe de Check:</b> Controleer online of uw woning in aanmerking komt voor de 2025/2026 regeling.</div></div>
-            <div class="step-item"><div class="step-num">2</div><div><b>Ontvang Offertes:</b> Vergelijk vrijblijvende voorstellen van erkende specialisten.</div></div>
-            <div class="step-item"><div class="step-num">3</div><div><b>Bespaar Direct:</b> Profiteer van lagere energiekosten en ontvang uw subsidie direct retour.</div></div>
+            <div class="step-item"><div class="step-num">1</div><div><b>Doe de Check:</b> Controleer uw woning voor de 2025/2026 regeling.</div></div>
+            <div class="step-item"><div class="step-num">2</div><div><b>Ontvang Offertes:</b> Vergelijk vrijblijvende voorstellen van specialisten.</div></div>
+            <div class="step-item"><div class="step-num">3</div><div><b>Bespaar Direct:</b> Ontvang subsidie en bespaar op uw rekening.</div></div>
         </div>
 
         <img src="news3.png" alt="Gelukkige huiseigenaren">
         <div class="img-caption">Familie Bakker ontving €2.850 terug: "De beste keuze van dit jaar!"</div>
 
-        <p>De familie Bakker uit Utrecht is een van de duizenden die de check deden. <i>"Binnen 48 uur was onze aanvraag goedgekeurd. Het geld stond sneller op de rekening dan verwacht en ons huis voelt direct comfortabeler aan."</i></p>
+        <div class="faq-section">
+            <h3>Veelgestelde vragen (FAQ)</h3>
+            <div class="faq-item">
+                <span class="faq-q">Is de check echt 100% gratis?</span>
+                <span class="faq-a">Ja, de check en de offertes zijn 100% gratis en geheel vrijblijvend.</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">Wat als ik een huurwoning heb?</span>
+                <span class="faq-a">Deze regeling is specifiek bedoeld voor woningeigenaren in Nederland.</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">Hoe snel ontvang ik de resultaten?</span>
+                <span class="faq-a">Binnen enkele minuten na de check ziet u of u in aanmerking komt.</span>
+            </div>
+        </div>
 
         <div class="comments-outer">
             <h4 style="margin: 0 0 15px 0; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Live Reacties (14)</h4>
             <div class="comments-window">
                 <div class="comments-track">
                     <div class="comment"><span class="comment-name">Mark van Dijk</span>: "Krijg bijna €2400 terug via de 2025 regeling! Echt een aanrader."<div class="comment-time">Net geplaatst</div></div>
-                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding voor platte daken."<div class="comment-time">15 min geleden</div></div>
+                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding."<div class="comment-time">15 min geleden</div></div>
                     <div class="comment"><span class="comment-name">Willem de Vries</span>: "Huis is nu veel warmer en de aanvraag was zo geregeld."<div class="comment-time">45 min geleden</div></div>
                     <div class="comment"><span class="comment-name">Annet Meijer</span>: "Eindelijk een duidelijke site. De check was zo gedaan."<div class="comment-time">1 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Pieter Post</span>: "Onze buren hadden het al gedaan, nu wij ook. Die €32,50 per m² is top."<div class="comment-time">2 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Linda de Mol</span>: "Ik wist niet dat er nog budget was voor 2025 / 2026. Bedankt!"<div class="comment-time">3 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Jan de Bruin</span>: "Investering was binnen 2 jaar terugverdiend. Doen!"<div class="comment-time">4 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Karin Smit</span>: "Zojuist de check gedaan, kom in aanmerking voor €2100!"<div class="comment-time">5 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Henk Janssen</span>: "Top geregeld allemaal. Erg tevreden over de isolatie."<div class="comment-time">6 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Els van Schaik</span>: "Geldt dit ook in Brabant? <br><b>Admin:</b> Jazeker Els, dit is een landelijke regeling."<div class="comment-time">7 uur geleden</div></div>
-                    
                     <div class="comment"><span class="comment-name">Mark van Dijk</span>: "Krijg bijna €2400 terug via de 2025 regeling! Echt een aanrader."<div class="comment-time">Net geplaatst</div></div>
-                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding voor platte daken."<div class="comment-time">15 min geleden</div></div>
-                    <div class="comment"><span class="comment-name">Willem de Vries</span>: "Huis is nu veel warmer en de aanvraag was zo geregeld."<div class="comment-time">45 min geleden</div></div>
-                    <div class="comment"><span class="comment-name">Annet Meijer</span>: "Eindelijk een duidelijke site. De check was zo gedaan."<div class="comment-time">1 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Pieter Post</span>: "Onze buren hadden het al gedaan, nu wij ook. Die €32,50 per m² is top."<div class="comment-time">2 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Linda de Mol</span>: "Ik wist niet dat er nog budget was voor 2025 / 2026. Bedankt!"<div class="comment-time">3 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Jan de Bruin</span>: "Investering was binnen 2 jaar terugverdiend. Doen!"<div class="comment-time">4 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Karin Smit</span>: "Zojuist de check gedaan, kom in aanmerking voor €2100!"<div class="comment-time">5 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Henk Janssen</span>: "Top geregeld allemaal. Erg tevreden over de isolatie."<div class="comment-time">6 uur geleden</div></div>
-                    <div class="comment"><span class="comment-name">Els van Schaik</span>: "Geldt dit ook in Brabant? <br><b>Admin:</b> Jazeker Els, dit is een landelijke regeling."<div class="comment-time">7 uur geleden</div></div>
+                    <div class="comment"><span class="comment-name">Sanne Bakker</span>: "Is dit ook voor platte daken? <br><b>Admin:</b> Jazeker Sanne, ook in 2025/2026 geldt de vergoeding."<div class="comment-time">15 min geleden</div></div>
                 </div>
             </div>
         </div>
@@ -203,8 +199,20 @@
 </div>
 
 <div class="sticky-footer">
-    <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button" style="font-size: 16px; padding: 15px; animation: pulseSticky 1.5s infinite;">ONTDEK MIJN SUBSIDIE →</a>
+    <a href="https://cd.leadfinv.com/CQM7fY1S9C" onclick="fbq('track', 'InitiateCheckout');" class="cta-button" style="font-size: 16px; padding: 15px;">ONTDEK MIJN SUBSIDIE →</a>
 </div>
+
+<script>
+    // 退出意图脚本
+    let showPopup = false;
+    document.addEventListener("mouseleave", function(e){
+        if(e.clientY < 0 && !showPopup) {
+            document.getElementById("exit-popup").style.display = "flex";
+            showPopup = true;
+        }
+    });
+    function closePopup() { document.getElementById("exit-popup").style.display = "none"; }
+</script>
 
 </body>
 </html>
